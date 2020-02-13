@@ -1,4 +1,3 @@
-#import tensorflow as tf
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 import pandas as pd
@@ -47,20 +46,13 @@ for i in range(2000):
 	sess.run(optimizer, feed_dict={x_: input_X, y_: input_Y})
 	if i % 1000 == 0:
 		print('Epoch ', i)
-		#print('A4 ', sess.run(A4, feed_dict={x_: input_X, y_: input_Y}))
-		#print('Theta1 ', sess.run(Theta1))
-		#print('Bias1 ', sess.run(Bias1))
-		#print('Theta2 ', sess.run(Theta2))
-		#print('Bias2 ', sess.run(Bias2))
 		print('cost ', sess.run(cost, feed_dict={x_: input_X, y_: input_Y}))
 
 test_A2 = tf.sigmoid(tf.matmul(x_test, Theta1) + Bias1)
 test_A3 = tf.sigmoid(tf.matmul(test_A2, Theta2) + Bias2)
 test_A4 = tf.sigmoid(tf.matmul(test_A3, Theta3) + Bias3)
-#print('res',np.argmax(sess.run(test_A4, feed_dict={x_test: test_input}),axis=1))
 diff=np.subtract((np.argmax(sess.run(test_A4, feed_dict={x_test: test_input}),axis=1)),test_out)
 print(diff)
-#print(test_out)
 nonz=np.count_nonzero(diff)
 acc=100-nonz*100/(diff.size)
 print(acc)
