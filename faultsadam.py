@@ -58,8 +58,7 @@ while (sess.run(cost, feed_dict={x_: input_X, y_: input_Y}))>0.04:
 test_A2 = tf.sigmoid(tf.matmul(x_test, Theta1) + Bias1)
 test_A3 = tf.sigmoid(tf.matmul(test_A2, Theta2) + Bias2)
 test_A4 = tf.sigmoid(tf.matmul(test_A3, Theta3) + Bias3)
-#print('res',np.argmax(sess.run(test_A4, feed_dict={x_test: test_input}),axis=1))
-#~~~~Calculating accuracy~~~~#
+
 diff=np.subtract((np.argmax(sess.run(test_A4, feed_dict={x_test: test_input}),axis=1)),test_out)
 print(diff)
 #print(test_out)
@@ -72,7 +71,6 @@ print(b)
 
 plt.plot(b,a)
 plt.show()
-#~~~~~Loading the test output data in excel~~~~~~#
-#ex=pd.DataFrame(np.argmax(sess.run(test_A4, feed_dict={x_test: test_input}),axis=1))
-#ex.to_excel('comp.xlsx',index=False)
+
+
 
